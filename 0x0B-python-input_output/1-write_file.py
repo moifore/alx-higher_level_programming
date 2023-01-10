@@ -8,4 +8,4 @@ def write_file(filename="", text=""):
     """ module write_file
     """
     with open(filename, 'w+') as f:
-        return f.write(text)
+        f.write(text)
