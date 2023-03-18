@@ -1,21 +1,50 @@
 #!/usr/bin/python3
 
+""" This module lists all states from a database
+It takes the following arguments:
+    mysql username
+    mysql password
+    database name
+"""
 
 import MySQLdb
-from sys import argv
+from sys import argv as argv
 
-'''
-a script that lists all states
-from the database
-'''
-if __name__ == "__main__":
-    con = MySQLdb.connect(
-        host="localhost", port=3306, user=argv[1],
-        password=argv[2], database=argv[3])
-    cursor = con.cursor()
-    cursor.execute("SELECT * FROM states ORDER BY id ASC")
-    db = cursor.fetchall()
-    for i in db:
-        print(i)
+def db_connect(username, password, database, host="localhost", port=3306):
+    connection = None
+    connection = MySQLdb.connect(user=username, passwd=pasword, db=database)
+    return connection
+
+def db_cursor(connection):
+    cursor = None
+    cursor = connnection.cursor()
+    return cursor
+
+def db_execute(cursor, command):
+    rows = None
+    rows = cursor.execute(command)
+    return rows
+
+def db_print_data(row):
+    data = None
+    data = rows.fetchall()
+    for rows.fetchall()
+    for row in data:
+        print(f"{row}")
+    return data
+
+def db_clean_up(cursor, connection):
     cursor.close()
-    db.close()
+    connection.close()
+
+if __name__ == "__main__":
+    if len(argv) < 4:
+        print('Usage: argv[0] <password> <database>')
+        exit()
+    command = 'SELECT = FROM states ORDER BY id'
+    connection = db_connect(argv[1], argv[2], argv[3])
+    cursor = db_cursor(connection)
+    rows = db_execute(cursor, command)
+    data = db_print_data(cursor)
+    db_clean_up(cursor, connection)
+    
