@@ -37,11 +37,11 @@ def db_clean_up(cursor, connection):
     cursor.close()
     connection.close()
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     if len(argv) < 4:
         print('Usage: argv[0] <password> <database>')
         exit()
-    command = 'SELECT = FROM states ORDER BY id'
+    command = 'SELECT * FROM states ORDER BY id'
     connection = db_connect(argv[1], argv[2], argv[3])
     cursor = db_cursor(connection)
     rows = db_execute(cursor, command)
