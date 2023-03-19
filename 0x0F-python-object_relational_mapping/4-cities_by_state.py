@@ -1,4 +1,4 @@
-#!/usr/bin/ppython3
+#!/usr/bin/python3
 
 # List all cities of hbtn_0e_0_usa by states
 # Usage: ./4-cities_by_state.py <mysql username> \
