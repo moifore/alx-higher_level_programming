@@ -5,9 +5,9 @@ Python script that takes a Github creds (username and password) and uses the Git
 
 import requests
 from requests.auth import HTTPBasicAuth
-from sys
+import sys
 
 if __name__ == "__main__":
-    url = "https://api.github.comusers/{}".format(argv[1])
-    r = requests.get(url, auth=HTTPBasicAuth(argv[1], argv[2]))
+    auth = HTTPBasicAuth(sys.argv[1], sys.argv[2])
+    r = requests.get("https://api.github.com/user", auth=auth)
     print(r.json().get("id"))
